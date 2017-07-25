@@ -47,7 +47,24 @@ class MenuViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
+        updateScores()
         
+    }
+    
+    func updateScores(){
+        recentScores = [
+            UserDefaults.standard.integer(forKey: multipleChoiceRecentscoreIdentifier),
+            UserDefaults.standard.integer(forKey: imageQuizRecentScoreIdentifier),
+            UserDefaults.standard.integer(forKey: rightWrongRecentscoreIdentifier),
+            UserDefaults.standard.integer(forKey: emojiHighscoreIdentifier)
+        ]
+        
+        highScores = [
+            UserDefaults.standard.integer(forKey: multipleChoiceHighscoreIdentifier),
+            UserDefaults.standard.integer(forKey: imageQuizHighScoreIdentifier),
+            UserDefaults.standard.integer(forKey: rightWrongHighscoreIdentifier),
+            UserDefaults.standard.integer(forKey: emojiHighscoreIdentifier)
+        ]
     }
     
     func layoutView()
@@ -56,6 +73,8 @@ class MenuViewController: UIViewController {
         view.addSubview(contentView)
         logoView.translatesAutoresizingMaskIntoConstraints = false;
         view.addSubview(logoView)
+        logoView.image = UIImage(named: "logo.jpg")
+        
         buttonView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonView)
         
@@ -91,9 +110,9 @@ class MenuViewController: UIViewController {
         highScoreLabel.font = UIFont.boldSystemFont(ofSize: 20)
         highScoreLabel.textColor = UIColor.white
         
-        titleLabel.text = "Multiple Choice"
-        recentScoreLabel.text = "Recent: 0"
-        highScoreLabel.text = "Higshscore: 0"
+        titleLabel.text = titles[scoreIndex]
+        recentScoreLabel.text = "Recent: " + String(UserDefaults.standard.integer(forKey: multipleChoiceRecentscoreIdentifier))
+        highScoreLabel.text = "Higshscore: " + String(UserDefaults.standard.integer(forKey: multipleChoiceHighscoreIdentifier))
         
         let constraints = [
         
@@ -125,11 +144,9 @@ class MenuViewController: UIViewController {
             gameButtons[0].heightAnchor.constraint(equalTo: gameButtons[1].heightAnchor),
             gameButtons[1].heightAnchor.constraint(equalTo: gameButtons[2].heightAnchor),
             gameButtons[2].heightAnchor.constraint(equalTo: gameButtons[3].heightAnchor),
-            
             scoreView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40.0),
             scoreView.widthAnchor.constraint(equalTo:  contentView.widthAnchor, multiplier: 0.6),
             scoreView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.3),
-            scoreView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: scoreView.topAnchor,constant:8.0),
             titleLabel.leadingAnchor.constraint(equalTo: scoreView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: scoreView.trailingAnchor),
@@ -146,10 +163,41 @@ class MenuViewController: UIViewController {
         ]
         
         
+        midxConstraints = [scoreView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)]
+        leftConstraints = [scoreView.trailingAnchor.constraint(equalTo: contentView.leadingAnchor)]
+        rightConstraints = [scoreView.leadingAnchor.constraint(equalTo: contentView.trailingAnchor)]
+        
+        
+        
         NSLayoutConstraint.activate(constraints)
+        NSLayoutConstraint.activate(midxConstraints)
+        
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(nextScores), userInfo: nil, repeats: true)
     }
     
-    
+    func nextScores(){
+        scoreIndex = scoreIndex < (recentScores.count - 1) ? scoreIndex + 1 : 0
+        UIView.animate(withDuration: 1.0, animations: { 
+            NSLayoutConstraint.deactivate(self.midxConstraints)
+            NSLayoutConstraint.activate(self.leftConstraints)
+            self.view.layoutIfNeeded()
+        }) { (completion: Bool) in
+            self.titleLabel.text = self.titles[self.scoreIndex]
+            self.recentScoreLabel.text = "Recent " + String(self.recentScores[self.scoreIndex])
+            self.highScoreLabel.text = "Highscore " + String(self.highScores[self.scoreIndex])
+            NSLayoutConstraint.deactivate(self.leftConstraints)
+            NSLayoutConstraint.activate(self.rightConstraints)
+            self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 1.0, animations: { 
+                NSLayoutConstraint.deactivate(self.rightConstraints)
+                NSLayoutConstraint.activate(self.midxConstraints)
+                self.view.layoutIfNeeded()
+            }, completion: { (Bool) in
+                
+            })
+            
+        }
+    }
 
 
 }

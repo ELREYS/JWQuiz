@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C31D118A1F276D0000D5A91B /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C31D11891F276D0000D5A91B /* logo.jpg */; };
 		C33D54411F23C2C80048CED8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33D54401F23C2C80048CED8 /* AppDelegate.swift */; };
 		C33D54431F23C2C80048CED8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33D54421F23C2C80048CED8 /* MenuViewController.swift */; };
 		C33D54461F23C2C80048CED8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C33D54441F23C2C80048CED8 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C31D11891F276D0000D5A91B /* logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpg; sourceTree = "<group>"; };
 		C33D543D1F23C2C80048CED8 /* JWQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JWQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C33D54401F23C2C80048CED8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C33D54421F23C2C80048CED8 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C31D11881F276B4E00D5A91B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C31D11891F276D0000D5A91B /* logo.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		C33D54341F23C2C80048CED8 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +120,7 @@
 		C33D54561F23C8FC0048CED8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C31D11881F276B4E00D5A91B /* Images */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -183,6 +194,7 @@
 			files = (
 				C33D544B1F23C2C80048CED8 /* LaunchScreen.storyboard in Resources */,
 				C33D54481F23C2C80048CED8 /* Assets.xcassets in Resources */,
+				C31D118A1F276D0000D5A91B /* logo.jpg in Resources */,
 				C33D54461F23C2C80048CED8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

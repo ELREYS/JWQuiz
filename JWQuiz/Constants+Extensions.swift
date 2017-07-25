@@ -9,4 +9,16 @@
 import Foundation
 
 let multipleChoiceHighscoreIdentifier = "MultipleChoiceHighscoreIdentifier"
+let multipleChoiceRecentscoreIdentifier = "MultipleChoiceRecentscoreIdentifier"
+
+let imageQuizHighScoreIdentifier = "ImageQuizChoiceHighscoreIdentifier"
+let imageQuizRecentScoreIdentifier = "ImageleQuizChoiceRecentscoreIdentifier"
+
+let rightWrongHighscoreIdentifier = "RightWrongHighscoreIdentifier"
+let rightWrongRecentscoreIdentifier = "RightWrongRecentscoreIdentifier"
+
+let emojiHighscoreIdentifier = "EmojiHighscoreIdentifier"
+let emojiRecentscoreIdentifier = "EmojiRecentcoreIdentifier"
+
+
 
