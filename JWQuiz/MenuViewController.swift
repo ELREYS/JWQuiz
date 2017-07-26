@@ -87,6 +87,7 @@ class MenuViewController: UIViewController {
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             button.setTitle(title, for: .normal)
             button.tag = index
+            button.addTarget(self, action:#selector(buttonHandler), for: .touchUpInside)
             gameButtons.append(button)
            
         }
@@ -173,6 +174,37 @@ class MenuViewController: UIViewController {
         NSLayoutConstraint.activate(midxConstraints)
         
         timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(nextScores), userInfo: nil, repeats: true)
+    }
+    
+    
+    func buttonHandler(sender: RoundedButton)
+    {
+        var vc: UIViewController?
+        
+        
+        switch sender.tag {
+        case 0:
+            //Multiple choice
+            print("Multiple choice")
+            vc = MultipleChoiceViewController()
+        case 1:
+            //Multiple choice
+            print("Image Quiz")
+        case 2:
+            //Multiple choice
+            print("Right Wrong")
+        case 3:
+            //Multiple choice
+            print("Emoji")
+        default:
+            break
+        }
+        
+        if let newVC = vc
+        {
+            navigationController?.pushViewController(newVC, animated: true)
+        }
+        
     }
     
     func nextScores(){
