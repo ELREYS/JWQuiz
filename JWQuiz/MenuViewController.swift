@@ -111,6 +111,7 @@ class MenuViewController: UIViewController {
         highScoreLabel.font = UIFont.boldSystemFont(ofSize: 20)
         highScoreLabel.textColor = UIColor.white
         
+        
         titleLabel.text = titles[scoreIndex]
         recentScoreLabel.text = "Recent: " + String(UserDefaults.standard.integer(forKey: multipleChoiceRecentscoreIdentifier))
         highScoreLabel.text = "Higshscore: " + String(UserDefaults.standard.integer(forKey: multipleChoiceHighscoreIdentifier))
