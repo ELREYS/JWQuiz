@@ -81,11 +81,10 @@ class MultipleChoiceViewController: UIViewController {
         for _ in 0...3
         {
             let button = RoundedButton()
-            button.addTarget(self, action: #selector(handlerButton) , for: .touchUpInside)
             answerButtons.append(button)
             LayoutUtils.disableConstraints(view: button)
             answerView.addSubview(button)
-            
+            button.addTarget(self, action: #selector(handlerButton) , for: .touchUpInside)
             
         }
         
@@ -193,7 +192,6 @@ class MultipleChoiceViewController: UIViewController {
             
             questionArray = try quizLoader.loadMultipleChoiceQuiz(forQuiz: "MultipleChoice")
             loadNextQuestion()
-            
             
             
         } catch  {
