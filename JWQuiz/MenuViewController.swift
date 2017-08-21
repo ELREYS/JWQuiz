@@ -69,13 +69,13 @@ class MenuViewController: UIViewController {
     
     func layoutView()
     {
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+        //contentView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(contentView)
-        logoView.translatesAutoresizingMaskIntoConstraints = false;
+        //logoView.translatesAutoresizingMaskIntoConstraints = false;
         view.addSubview(logoView)
         logoView.image = UIImage(named: "logo.jpg")
         
-        buttonView.translatesAutoresizingMaskIntoConstraints = false
+        //buttonView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonView)
         
         for (index,title) in titles.enumerated()
@@ -92,12 +92,12 @@ class MenuViewController: UIViewController {
            
         }
         
-        scoreView.translatesAutoresizingMaskIntoConstraints = false
+        //scoreView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(scoreView)
         
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        recentScoreLabel.translatesAutoresizingMaskIntoConstraints = false
-        highScoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        //titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        //recentScoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        //highScoreLabel.translatesAutoresizingMaskIntoConstraints = false
         scoreView.addSubview(titleLabel)
         scoreView.addSubview(recentScoreLabel)
         scoreView.addSubview(highScoreLabel)
@@ -115,6 +115,18 @@ class MenuViewController: UIViewController {
         titleLabel.text = titles[scoreIndex]
         recentScoreLabel.text = "Recent: " + String(UserDefaults.standard.integer(forKey: multipleChoiceRecentscoreIdentifier))
         highScoreLabel.text = "Higshscore: " + String(UserDefaults.standard.integer(forKey: multipleChoiceHighscoreIdentifier))
+        
+        
+        disablaConstraints(View: contentView)
+        disablaConstraints(View: logoView)
+        disablaConstraints(View: buttonView)
+        disablaConstraints(View: scoreView)
+        disablaConstraints(View: titleLabel)
+        disablaConstraints(View: recentScoreLabel)
+        disablaConstraints(View: highScoreLabel)
+        disablaConstraints(View: titleLabel)
+        
+        
         
         let constraints = [
         
@@ -207,6 +219,14 @@ class MenuViewController: UIViewController {
         }
         
     }
+    
+    func disablaConstraints(View: UIView? = nil)
+    {
+        View?.translatesAutoresizingMaskIntoConstraints = false
+        
+    }
+    
+    
     
     func nextScores(){
         scoreIndex = scoreIndex < (recentScores.count - 1) ? scoreIndex + 1 : 0

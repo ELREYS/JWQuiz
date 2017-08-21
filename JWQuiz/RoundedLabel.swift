@@ -17,9 +17,5 @@ class RoundedLabel: UILabel {
         
     }
     
-    override func drawText(in rect: CGRect) {
-        let newRect = rect.insetBy(dx: 8.0, dy: 8.0)
-        super.draw(newRect)
-    }
-
+    
 }
