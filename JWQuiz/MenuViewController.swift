@@ -7,23 +7,26 @@
 //
 
 import UIKit
+import AVFoundation
+var backgroundSound:AVAudioPlayer = AVAudioPlayer()
+var wrongWav:AVAudioPlayer = AVAudioPlayer()
+var correctWav:AVAudioPlayer = AVAudioPlayer()
+var startWav:AVAudioPlayer = AVAudioPlayer()
+
 
 class MenuViewController: UIViewController {
 
     private let contentView = UIView()
     private let logoView = UIImageView()
     private let buttonView = UIView()
-    private var gameButtons = [RoundedButton]()
+    private var button = RoundedButton()
     private let scoreView = UIView()
     private let titleLabel = UILabel()
     private let recentScoreLabel = UILabel()
     private let highScoreLabel = UILabel()
     
     private let titles = [
-        "Multiple Choice",
-        "Image Quiz",
-        "Right or Wrong",
-        "Emoji Riddle"
+        "Multiple Choice"
     ]
     
     private var recentScores = [Int]()
@@ -35,6 +38,11 @@ class MenuViewController: UIViewController {
     private var leftConstraints: [NSLayoutConstraint]!
     private var rightConstraints: [NSLayoutConstraint]!
     
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.barStyle = .blackTranslucent
@@ -42,6 +50,20 @@ class MenuViewController: UIViewController {
         view.backgroundColor = UIColor.init(red: 41/255, green: 128/255, blue: 185/255, alpha: 1.0)
         layoutView()
         
+        RandomBackgroundMusic()
+        
+        let wrongURL = Bundle.main.url(forResource: "wrong", withExtension: "aiff")
+        wrongWav = try! AVAudioPlayer(contentsOf: wrongURL!)
+        wrongWav.prepareToPlay()
+        
+        
+        let correctURL = Bundle.main.url(forResource: "correct", withExtension: "mp3")
+        correctWav = try! AVAudioPlayer(contentsOf: correctURL!)
+        correctWav.prepareToPlay()
+        
+        let startURL = Bundle.main.url(forResource: "Start", withExtension: "mp3")
+        startWav = try! AVAudioPlayer(contentsOf: startURL!)
+        startWav.prepareToPlay()
         
     }
     
@@ -54,17 +76,25 @@ class MenuViewController: UIViewController {
     func updateScores(){
         recentScores = [
             UserDefaults.standard.integer(forKey: multipleChoiceRecentscoreIdentifier),
-            UserDefaults.standard.integer(forKey: imageQuizRecentScoreIdentifier),
-            UserDefaults.standard.integer(forKey: rightWrongRecentscoreIdentifier),
-            UserDefaults.standard.integer(forKey: emojiHighscoreIdentifier)
+           
         ]
         
         highScores = [
             UserDefaults.standard.integer(forKey: multipleChoiceHighscoreIdentifier),
-            UserDefaults.standard.integer(forKey: imageQuizHighScoreIdentifier),
-            UserDefaults.standard.integer(forKey: rightWrongHighscoreIdentifier),
-            UserDefaults.standard.integer(forKey: emojiHighscoreIdentifier)
+           
         ]
+    }
+    
+    func RandomBackgroundMusic(){
+        
+        let number = arc4random_uniform(3)
+        print(number)
+        let backgroundURL = Bundle.main.url(forResource: "Back\(number)", withExtension: "mp3")
+        backgroundSound = try! AVAudioPlayer(contentsOf: backgroundURL!)
+        backgroundSound.stop()
+        backgroundSound.numberOfLoops = -1
+        backgroundSound.prepareToPlay()
+        backgroundSound.play()
     }
     
     func layoutView()
@@ -78,19 +108,18 @@ class MenuViewController: UIViewController {
         //buttonView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonView)
         
-        for (index,title) in titles.enumerated()
-        {
-            let button = RoundedButton()
+        
             button.translatesAutoresizingMaskIntoConstraints = false;
-            buttonView.addSubview(button)
+        
             button.backgroundColor = UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 1.0)
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-            button.setTitle(title, for: .normal)
-            button.tag = index
+            button.setTitle("Start Game", for: .normal)
+            button.tag = 0
             button.addTarget(self, action:#selector(buttonHandler), for: .touchUpInside)
-            gameButtons.append(button)
+        
+        buttonView.addSubview(button)
            
-        }
+        
         
         //scoreView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(scoreView)
@@ -142,22 +171,11 @@ class MenuViewController: UIViewController {
             buttonView.bottomAnchor.constraint(equalTo: scoreView.topAnchor, constant: -20),
             buttonView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.6),
             buttonView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            gameButtons[0].topAnchor.constraint(equalTo: buttonView.topAnchor, constant: 8.0),
-            gameButtons[0].bottomAnchor.constraint(equalTo: gameButtons[1].topAnchor, constant: -8.0),
-            gameButtons[0].leadingAnchor.constraint(equalTo: buttonView.leadingAnchor),
-            gameButtons[0].trailingAnchor.constraint(equalTo: buttonView.trailingAnchor),
-            gameButtons[1].bottomAnchor.constraint(equalTo: gameButtons[2].topAnchor, constant: -8.0),
-            gameButtons[1].leadingAnchor.constraint(equalTo: buttonView.leadingAnchor),
-            gameButtons[1].trailingAnchor.constraint(equalTo: buttonView.trailingAnchor),
-            gameButtons[2].bottomAnchor.constraint(equalTo: gameButtons[3].topAnchor, constant: -8.0),
-            gameButtons[2].leadingAnchor.constraint(equalTo: buttonView.leadingAnchor),
-            gameButtons[2].trailingAnchor.constraint(equalTo: buttonView.trailingAnchor),
-            gameButtons[3].bottomAnchor.constraint(equalTo: buttonView.bottomAnchor, constant: -8.0),
-            gameButtons[3].leadingAnchor.constraint(equalTo: buttonView.leadingAnchor),
-            gameButtons[3].trailingAnchor.constraint(equalTo: buttonView.trailingAnchor),
-            gameButtons[0].heightAnchor.constraint(equalTo: gameButtons[1].heightAnchor),
-            gameButtons[1].heightAnchor.constraint(equalTo: gameButtons[2].heightAnchor),
-            gameButtons[2].heightAnchor.constraint(equalTo: gameButtons[3].heightAnchor),
+            button.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            button.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.2),
             scoreView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40.0),
             scoreView.widthAnchor.constraint(equalTo:  contentView.widthAnchor, multiplier: 0.6),
             scoreView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.3),
@@ -186,7 +204,7 @@ class MenuViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
         NSLayoutConstraint.activate(midxConstraints)
         
-        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(nextScores), userInfo: nil, repeats: true)
+        //timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(nextScores), userInfo: nil, repeats: true)
     }
     
     
@@ -199,6 +217,7 @@ class MenuViewController: UIViewController {
         case 0:
             //Multiple choice
             print("Multiple choice")
+            startWav.play()
             vc = MultipleChoiceViewController()
         case 1:
             //Multiple choice
@@ -227,31 +246,31 @@ class MenuViewController: UIViewController {
     }
     
     
-    
-    func nextScores(){
-        scoreIndex = scoreIndex < (recentScores.count - 1) ? scoreIndex + 1 : 0
-        UIView.animate(withDuration: 1.0, animations: { 
-            NSLayoutConstraint.deactivate(self.midxConstraints)
-            NSLayoutConstraint.activate(self.leftConstraints)
-            self.view.layoutIfNeeded()
-        }) { (completion: Bool) in
-            self.titleLabel.text = self.titles[self.scoreIndex]
-            self.recentScoreLabel.text = "Recent " + String(self.recentScores[self.scoreIndex])
-            self.highScoreLabel.text = "Highscore " + String(self.highScores[self.scoreIndex])
-            NSLayoutConstraint.deactivate(self.leftConstraints)
-            NSLayoutConstraint.activate(self.rightConstraints)
-            self.view.layoutIfNeeded()
-            UIView.animate(withDuration: 1.0, animations: { 
-                NSLayoutConstraint.deactivate(self.rightConstraints)
-                NSLayoutConstraint.activate(self.midxConstraints)
-                self.view.layoutIfNeeded()
-            }, completion: { (Bool) in
-                
-            })
-            
-        }
+
+//    func nextScores(){
+//        scoreIndex = scoreIndex < (recentScores.count - 1) ? scoreIndex + 1 : 0
+//        UIView.animate(withDuration: 1.0, animations: { 
+//            NSLayoutConstraint.deactivate(self.midxConstraints)
+//            NSLayoutConstraint.activate(self.leftConstraints)
+//            self.view.layoutIfNeeded()
+//        }) { (completion: Bool) in
+//            self.titleLabel.text = self.titles[self.scoreIndex]
+//            self.recentScoreLabel.text = "Recent " + String(self.recentScores[self.scoreIndex])
+//            self.highScoreLabel.text = "Highscore " + String(self.highScores[self.scoreIndex])
+//            NSLayoutConstraint.deactivate(self.leftConstraints)
+//            NSLayoutConstraint.activate(self.rightConstraints)
+//            self.view.layoutIfNeeded()
+//            UIView.animate(withDuration: 1.0, animations: { 
+//                NSLayoutConstraint.deactivate(self.rightConstraints)
+//                NSLayoutConstraint.activate(self.midxConstraints)
+//                self.view.layoutIfNeeded()
+//            }, completion: { (Bool) in
+//                
+//            })
+//            
+//        }
+//    }
+ 
     }
 
-
-}
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MultipleChoiceViewController: UIViewController {
+class GenericQuizViewController: UIViewController {
 
     
     
@@ -59,7 +59,6 @@ class MultipleChoiceViewController: UIViewController {
         
         
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
@@ -276,7 +275,6 @@ class MultipleChoiceViewController: UIViewController {
     func answerButtonHandler(_ sender: RoundedButton){
         timer.invalidate()
         if sender.titleLabel?.text == currentQuestion.correctAnswer{
-            correctWav.play()
             score += 1
             
             
@@ -284,7 +282,6 @@ class MultipleChoiceViewController: UIViewController {
             questionButton.isEnabled = true
             
         }else{
-            wrongWav.play()
             sender.backgroundColor = flatRed
             showAlert(forReason: 1)
         }
@@ -341,7 +338,6 @@ class MultipleChoiceViewController: UIViewController {
             }
             UserDefaults.standard.set(score, forKey: multipleChoiceRecentscoreIdentifier)
             navigationController?.popViewController(animated: true)
-            
         }
     
     
