@@ -82,13 +82,14 @@ class MultipleChoiceViewController: UIViewController {
         LayoutUtils.disableConstraints(view: questionButton)
         questionView.addSubview(questionButton)
         questionButton.isEnabled = false
+        questionButton.addTarget(self, action: #selector(questionButtonHandler), for: .touchUpInside)
         
         LayoutUtils.disableConstraints(view: answerView)
         contentView.addSubview(answerView)
         for _ in 0...3
         {
             let button = RoundedButton()
-            button.addTarget(self, action: #selector(handlerButton) , for: .touchUpInside)
+            button.addTarget(self, action: #selector(answerButtonHandler(_:)) , for: .touchUpInside)
             answerButtons.append(button)
             LayoutUtils.disableConstraints(view: button)
             answerView.addSubview(button)
@@ -264,11 +265,51 @@ class MultipleChoiceViewController: UIViewController {
         }
     }
     
+    
+    func questionButtonHandler(){
+        questionButton.isEnabled = false
+        questionIndex += 1
+        questionIndex < questionArray.count ? loadNextQuestion() : showAlert(forReason: 2)
+    }
+    
+    func answerButtonHandler(_ sender: RoundedButton){
+        timer.invalidate()
+        if sender.titleLabel?.text == currentQuestion.correctAnswer{
+            score += 1
+            
+            
+            questionLabel.text = "Tap to continue"
+            questionButton.isEnabled = true
+            
+        }else{
+            sender.backgroundColor = flatRed
+            showAlert(forReason: 1)
+        }
+        
+        for button in answerButtons {
+            button.isEnabled = false
+            if button.titleLabel?.text == currentQuestion.correctAnswer{
+               button.backgroundColor = flatGreen
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     func showAlert(forReason reason: Int){
         
         switch reason {
         case 0:
             quizAlertView = QuizAlertView(withTitle: "You Lost", andMessage: "You ran out of time", colors: [backgroundColor,foregroundColor])
+        case 1:
+            quizAlertView = QuizAlertView(withTitle: "You Lost", andMessage: "Wrong answer", colors: [backgroundColor,foregroundColor])
+        case 2:
+            quizAlertView = QuizAlertView(withTitle: "You won", andMessage: "You have answered all questions", colors: [backgroundColor,foregroundColor])
         default:
             break
         }
@@ -291,6 +332,11 @@ class MultipleChoiceViewController: UIViewController {
         }
         
         func closeAlert(){
+            if score > highscore{
+                highscore = score
+                UserDefaults.standard.set(highscore, forKey: multipleChoiceHighscoreIdentifier)
+            }
+            UserDefaults.standard.set(score, forKey: multipleChoiceRecentscoreIdentifier)
             navigationController?.popViewController(animated: true)
         }
     

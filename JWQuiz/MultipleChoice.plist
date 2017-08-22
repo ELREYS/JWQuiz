@@ -1,35 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Questions</key>
-	<array>
-		<dict>
-			<key>Question</key>
-			<string>Che anno e ?</string>
-			<key>Answers</key>
-			<array>
-				<string>1979</string>
-				<string>2016</string>
-				<string>1914</string>
-				<string>2017</string>
-			</array>
-			<key>CorrectAnswer</key>
-			<string>2017</string>
-		</dict>
-		<dict>
-			<key>Question</key>
-			<string>Prima guerra mondiale ?</string>
-			<key>Answers</key>
-			<array>
-				<string>1979</string>
-				<string>2016</string>
-				<string>1914</string>
-				<string>2017</string>
-			</array>
-			<key>CorrectAnswer</key>
-			<string>1914</string>
-		</dict>
-	</array>
-</dict>
+    <dict>
+        <key>Questions</key>
+        <array>
+            <dict>
+                <key>Question</key>
+                <string>Che anno e ?</string>
+                <key>Answers</key>
+                <array>
+                    <string>1979</string>
+                    <string>2016</string>
+                    <string>1914</string>
+                    <string>2017</string>
+                </array>
+                <key>CorrectAnswer</key>
+                <string>2017</string>
+            </dict>
+            <dict>
+                <key>Question</key>
+                <string>Prima guerra mondiale ?</string>
+                <key>Answers</key>
+                <array>
+                    <string>1979</string>
+                    <string>2016</string>
+                    <string>1914</string>
+                    <string>2017</string>
+                </array>
+                <key>CorrectAnswer</key>
+                <string>1914</string>
+            </dict>
+            <dict>
+                <key>Question</key>
+                <string>Quanti fratelli ebbe Giuseppe</string>
+                <key>Answers</key>
+                <array>
+                    <string>10</string>
+                    <string>11</string>
+                    <string>1</string>
+                    <string>12</string>
+                </array>
+                <key>CorrectAnswer</key>
+                <string>12</string>
+            </dict>
+            <dict>
+                <key>Question</key>
+                <string>Come si chiama in ebraico il nome di Dio</string>
+                <key>Answers</key>
+                <array>
+                    <string>YHWY</string>
+                    <string>JHWI</string>
+                    <string>HWZH</string>
+                    <string>YEHUVA</string>
+                </array>
+                <key>CorrectAnswer</key>
+                <string>YHWY</string>
+            </dict>
+        </array>
+    </dict>
 </plist>
