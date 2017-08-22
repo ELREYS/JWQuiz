@@ -50,6 +50,8 @@ class MultipleChoiceViewController: UIViewController {
     private var score = 0
     private var highscore = UserDefaults.standard.integer(forKey: multipleChoiceHighscoreIdentifier)
     
+    private var quizAlertView:QuizAlertView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = backgroundColor
@@ -263,20 +265,36 @@ class MultipleChoiceViewController: UIViewController {
     }
     
     func showAlert(forReason reason: Int){
-        let avc = UIAlertController()
+        
         switch reason {
         case 0:
-            avc.title = "You Lost"
-            avc.message = "You ran out of time"
+            quizAlertView = QuizAlertView(withTitle: "You Lost", andMessage: "You ran out of time", colors: [backgroundColor,foregroundColor])
         default:
             break
         }
         
-        let ok = UIAlertAction(title: "Continue", style: .default, handler: nil)
-        avc.addAction(ok)
-        present(avc, animated: true, completion: nil)
+        quizAlertView?.closeButton.addTarget(self, action: #selector(closeAlert), for: .touchUpInside)
+        createQuizAlertView(withAlert: quizAlertView!)
+        
     }
-
+    
+        func createQuizAlertView(withAlert alert: QuizAlertView){
+            alert.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(alert)
+            
+            alert.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+            alert.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            alert.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            alert.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+            
+            
+        }
+        
+        func closeAlert(){
+            navigationController?.popViewController(animated: true)
+        }
+    
+    
     
 
 }

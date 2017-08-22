@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		655031531F4C1589003F9606 /* QuizAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655031521F4C1589003F9606 /* QuizAlertView.swift */; };
 		655A09A81F4ABEA000815D2F /* QuizLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A09A71F4ABEA000815D2F /* QuizLoader.swift */; };
 		658013E31F443AAA00C525A6 /* UtilsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658013E21F443AAA00C525A6 /* UtilsClass.swift */; };
 		658B972C1F28C2A0002651DB /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658B972B1F28C2A0002651DB /* MultipleChoiceViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		655031521F4C1589003F9606 /* QuizAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizAlertView.swift; sourceTree = "<group>"; };
 		655A09A71F4ABEA000815D2F /* QuizLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizLoader.swift; sourceTree = "<group>"; };
 		658013E21F443AAA00C525A6 /* UtilsClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsClass.swift; sourceTree = "<group>"; };
 		658B972B1F28C2A0002651DB /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				C33D545A1F23CC780048CED8 /* RoundedLabel.swift */,
 				C3978DD91F274CE70092BD01 /* Constants+Extensions.swift */,
 				655A09A71F4ABEA000815D2F /* QuizLoader.swift */,
+				655031521F4C1589003F9606 /* QuizAlertView.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				C33D54591F23CC0E0048CED8 /* RoundedButton.swift in Sources */,
 				C33D545B1F23CC780048CED8 /* RoundedLabel.swift in Sources */,
 				655A09A81F4ABEA000815D2F /* QuizLoader.swift in Sources */,
+				655031531F4C1589003F9606 /* QuizAlertView.swift in Sources */,
 				C33D54411F23C2C80048CED8 /* AppDelegate.swift in Sources */,
 				C3978DDA1F274CE70092BD01 /* Constants+Extensions.swift in Sources */,
 				658B972C1F28C2A0002651DB /* MultipleChoiceViewController.swift in Sources */,
