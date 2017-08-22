@@ -45,6 +45,11 @@ class MultipleChoiceViewController: UIViewController {
     private var questionIndex = 0
     private var currentQuestion :MultipleChoiceQuestion!
     
+    
+    private var timer = Timer()
+    private var score = 0
+    private var highscore = UserDefaults.standard.integer(forKey: multipleChoiceHighscoreIdentifier)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = backgroundColor
@@ -93,6 +98,7 @@ class MultipleChoiceViewController: UIViewController {
         contentView.addSubview(countdownView)
         LayoutUtils.disableConstraints(view: progressView)
         countdownView.addSubview(progressView)
+        progressView.transform = progressView.transform.scaledBy(x: 1, y: 10)
         
         
         contentViewConstraints = [
@@ -223,7 +229,52 @@ class MultipleChoiceViewController: UIViewController {
    
         }
         questionLabel.text = currentQuestion.question
+        startTimer()
         
+    }
+    
+    func startTimer(){
+        progressView.progressTintColor = flatGreen
+        progressView.trackTintColor = UIColor.clear
+        progressView.progress = 1.0
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateProgressView), userInfo: nil, repeats: true)
+    }
+    
+    func updateProgressView(){
+        progressView.progress -= 0.01/30
+        if progressView.progress <= 0{
+            //Game over
+            outOfTime()
+        }
+        else if progressView.progress <= 0.2{
+            progressView.progressTintColor = flatRed
+        }
+        else if progressView.progress <= 0.5{
+            progressView.progressTintColor = flatOrange
+        }
+    }
+    
+    func outOfTime(){
+        timer.invalidate()
+        showAlert(forReason: 0)
+        for button in answerButtons {
+            button.isEnabled = false
+        }
+    }
+    
+    func showAlert(forReason reason: Int){
+        let avc = UIAlertController()
+        switch reason {
+        case 0:
+            avc.title = "You Lost"
+            avc.message = "You ran out of time"
+        default:
+            break
+        }
+        
+        let ok = UIAlertAction(title: "Continue", style: .default, handler: nil)
+        avc.addAction(ok)
+        present(avc, animated: true, completion: nil)
     }
 
     
