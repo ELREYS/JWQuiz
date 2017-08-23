@@ -341,10 +341,13 @@ class MultipleChoiceViewController: UIViewController {
         switch reason {
         case 0:
             quizAlertView = QuizAlertView(withTitle: "You Lost", andMessage: "You ran out of time", colors: [backgroundColor,foregroundColor])
+            backgroundSound.stop()
         case 1:
             quizAlertView = QuizAlertView(withTitle: "You Lost", andMessage: "Wrong answer", colors: [backgroundColor,foregroundColor])
+            backgroundSound.stop()
         case 2:
             quizAlertView = QuizAlertView(withTitle: "You won", andMessage: "You have answered all questions", colors: [backgroundColor,foregroundColor])
+            backgroundSound.stop()
         default:
             break
         }
@@ -383,6 +386,8 @@ class MultipleChoiceViewController: UIViewController {
         super.didMove(toParentViewController: parent)
         if parent == nil{
             timer.invalidate()
+            backgroundSound.stop()
+            player.RandomBackgroundMusic()
         }
         
     }

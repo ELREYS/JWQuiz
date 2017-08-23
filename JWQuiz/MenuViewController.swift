@@ -52,7 +52,7 @@ class MenuViewController: UIViewController {
         
         RandomBackgroundMusic()
         
-        let wrongURL = Bundle.main.url(forResource: "wrong", withExtension: "aiff")
+        let wrongURL = Bundle.main.url(forResource: "wrong", withExtension: "wav")
         wrongWav = try! AVAudioPlayer(contentsOf: wrongURL!)
         wrongWav.prepareToPlay()
         
@@ -87,7 +87,7 @@ class MenuViewController: UIViewController {
     
     func RandomBackgroundMusic(){
         
-        let number = arc4random_uniform(3)
+        let number = arc4random_uniform(20)
         print(number)
         let backgroundURL = Bundle.main.url(forResource: "Back\(number)", withExtension: "mp3")
         backgroundSound = try! AVAudioPlayer(contentsOf: backgroundURL!)
@@ -103,7 +103,7 @@ class MenuViewController: UIViewController {
         view.addSubview(contentView)
         //logoView.translatesAutoresizingMaskIntoConstraints = false;
         view.addSubview(logoView)
-        logoView.image = UIImage(named: "logo.jpg")
+        logoView.image = UIImage(named:"logo.png")
         
         //buttonView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonView)
