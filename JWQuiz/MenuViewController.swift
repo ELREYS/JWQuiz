@@ -234,6 +234,7 @@ class MenuViewController: UIViewController {
         
         if let newVC = vc
         {
+            backgroundSound.stop()
             navigationController?.pushViewController(newVC, animated: true)
         }
         

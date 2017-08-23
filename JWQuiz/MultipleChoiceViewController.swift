@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MultipleChoiceViewController: UIViewController {
 
@@ -52,13 +53,33 @@ class MultipleChoiceViewController: UIViewController {
     
     private var quizAlertView:QuizAlertView?
     
+    
+    private var tickBackground:AVAudioPlayer = AVAudioPlayer()
+    private var WinnerBackground:AVAudioPlayer = AVAudioPlayer()
+    let player = MenuViewController()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = backgroundColor
         layoutView()
         
+        player.RandomBackgroundMusic()
+        
+        let tickSound = Bundle.main.url(forResource: "tick", withExtension: "mp3")
+        tickBackground = try! AVAudioPlayer(contentsOf: tickSound!)
+        tickBackground.stop()
+        tickBackground.prepareToPlay()
+        
+        let winner = Bundle.main.url(forResource: "Success", withExtension: "wav")
+        WinnerBackground = try! AVAudioPlayer(contentsOf: winner!)
+        WinnerBackground.stop()
+        WinnerBackground.prepareToPlay()
         
     }
+    
+   
+    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -252,9 +273,11 @@ class MultipleChoiceViewController: UIViewController {
         }
         else if progressView.progress <= 0.2{
             progressView.progressTintColor = flatRed
+            
         }
         else if progressView.progress <= 0.5{
             progressView.progressTintColor = flatOrange
+            
         }
     }
     
@@ -270,7 +293,16 @@ class MultipleChoiceViewController: UIViewController {
     func questionButtonHandler(){
         questionButton.isEnabled = false
         questionIndex += 1
-        questionIndex < questionArray.count ? loadNextQuestion() : showAlert(forReason: 2)
+        if questionIndex < questionArray.count{
+            loadNextQuestion()
+        }else{
+            showAlert(forReason: 2)
+            backgroundSound.stop()
+            WinnerBackground.play()
+        }
+        
+        
+        
     }
     
     func answerButtonHandler(_ sender: RoundedButton){
@@ -341,6 +373,8 @@ class MultipleChoiceViewController: UIViewController {
             }
             UserDefaults.standard.set(score, forKey: multipleChoiceRecentscoreIdentifier)
             navigationController?.popViewController(animated: true)
+            player.RandomBackgroundMusic()
+            
             
         }
     

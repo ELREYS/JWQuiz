@@ -18,6 +18,8 @@
 		655031531F4C1589003F9606 /* QuizAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655031521F4C1589003F9606 /* QuizAlertView.swift */; };
 		655A09A81F4ABEA000815D2F /* QuizLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655A09A71F4ABEA000815D2F /* QuizLoader.swift */; };
 		65627C4D1F4C4A31001CB4EE /* GenericQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65627C4C1F4C4A31001CB4EE /* GenericQuizViewController.swift */; };
+		6566E78C1F4D62CF00E67E1B /* Success.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6566E78B1F4D62CF00E67E1B /* Success.wav */; };
+		6566E78E1F4D62F200E67E1B /* tick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6566E78D1F4D62F200E67E1B /* tick.mp3 */; };
 		658013E31F443AAA00C525A6 /* UtilsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658013E21F443AAA00C525A6 /* UtilsClass.swift */; };
 		658B972C1F28C2A0002651DB /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658B972B1F28C2A0002651DB /* MultipleChoiceViewController.swift */; };
 		65F02A901F44816800884DCD /* MultipleChoice.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65F02A8F1F44816800884DCD /* MultipleChoice.plist */; };
@@ -44,6 +46,8 @@
 		655031521F4C1589003F9606 /* QuizAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizAlertView.swift; sourceTree = "<group>"; };
 		655A09A71F4ABEA000815D2F /* QuizLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizLoader.swift; sourceTree = "<group>"; };
 		65627C4C1F4C4A31001CB4EE /* GenericQuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericQuizViewController.swift; sourceTree = "<group>"; };
+		6566E78B1F4D62CF00E67E1B /* Success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Success.wav; sourceTree = "<group>"; };
+		6566E78D1F4D62F200E67E1B /* tick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tick.mp3; sourceTree = "<group>"; };
 		658013E21F443AAA00C525A6 /* UtilsClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsClass.swift; sourceTree = "<group>"; };
 		658B972B1F28C2A0002651DB /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewController.swift; sourceTree = "<group>"; };
 		65F02A8F1F44816800884DCD /* MultipleChoice.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MultipleChoice.plist; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 		C33D54561F23C8FC0048CED8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6566E78D1F4D62F200E67E1B /* tick.mp3 */,
+				6566E78B1F4D62CF00E67E1B /* Success.wav */,
 				6507F1F41F4C70B9002CAB6E /* Start.mp3 */,
 				6507F1EC1F4C6899002CAB6E /* Back0.mp3 */,
 				6507F1ED1F4C6899002CAB6E /* Back1.mp3 */,
@@ -245,8 +251,10 @@
 				6507F1EB1F4C6474002CAB6E /* wrong.aiff in Resources */,
 				C33D54481F23C2C80048CED8 /* Assets.xcassets in Resources */,
 				6507F1F01F4C6899002CAB6E /* Back0.mp3 in Resources */,
+				6566E78C1F4D62CF00E67E1B /* Success.wav in Resources */,
 				6507F1F21F4C6899002CAB6E /* Back2.mp3 in Resources */,
 				6507F1F31F4C6899002CAB6E /* Back3.mp3 in Resources */,
+				6566E78E1F4D62F200E67E1B /* tick.mp3 in Resources */,
 				C31D118A1F276D0000D5A91B /* logo.jpg in Resources */,
 				6507F1EA1F4C6474002CAB6E /* correct.mp3 in Resources */,
 				C33D54461F23C2C80048CED8 /* Main.storyboard in Resources */,
