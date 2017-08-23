@@ -39,6 +39,7 @@
 		6566E7BC1F4D8F6B00E67E1B /* Back19.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6566E7A71F4D8F6B00E67E1B /* Back19.mp3 */; };
 		6566E7BD1F4D8F6B00E67E1B /* Back20.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6566E7A81F4D8F6B00E67E1B /* Back20.mp3 */; };
 		6566E7BF1F4D919400E67E1B /* wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6566E7BE1F4D919400E67E1B /* wrong.wav */; };
+		6566E7C11F4DAD2100E67E1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6566E7C01F4DAD2100E67E1B /* GoogleService-Info.plist */; };
 		658013E31F443AAA00C525A6 /* UtilsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658013E21F443AAA00C525A6 /* UtilsClass.swift */; };
 		658B972C1F28C2A0002651DB /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658B972B1F28C2A0002651DB /* MultipleChoiceViewController.swift */; };
 		65F02A901F44816800884DCD /* MultipleChoice.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65F02A8F1F44816800884DCD /* MultipleChoice.plist */; };
@@ -86,6 +87,7 @@
 		6566E7A71F4D8F6B00E67E1B /* Back19.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Back19.mp3; sourceTree = "<group>"; };
 		6566E7A81F4D8F6B00E67E1B /* Back20.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Back20.mp3; sourceTree = "<group>"; };
 		6566E7BE1F4D919400E67E1B /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
+		6566E7C01F4DAD2100E67E1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		658013E21F443AAA00C525A6 /* UtilsClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilsClass.swift; sourceTree = "<group>"; };
 		658B972B1F28C2A0002651DB /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewController.swift; sourceTree = "<group>"; };
 		65F02A8F1F44816800884DCD /* MultipleChoice.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MultipleChoice.plist; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		C33D54341F23C2C80048CED8 = {
 			isa = PBXGroup;
 			children = (
+				6566E7C01F4DAD2100E67E1B /* GoogleService-Info.plist */,
 				C33D543F1F23C2C80048CED8 /* JWQuiz */,
 				C33D543E1F23C2C80048CED8 /* Products */,
 			);
@@ -327,6 +330,7 @@
 				6566E7AB1F4D8F6B00E67E1B /* Back2.mp3 in Resources */,
 				6566E7B01F4D8F6B00E67E1B /* Back7.mp3 in Resources */,
 				6566E7931F4D8F1500E67E1B /* logo.png in Resources */,
+				6566E7C11F4DAD2100E67E1B /* GoogleService-Info.plist in Resources */,
 				C31D118A1F276D0000D5A91B /* logo.jpg in Resources */,
 				6507F1EA1F4C6474002CAB6E /* correct.mp3 in Resources */,
 				6566E7AD1F4D8F6B00E67E1B /* Back4.mp3 in Resources */,
@@ -482,6 +486,7 @@
 				INFOPLIST_FILE = JWQuiz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gditdev.ch.Demo1.JWQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -495,6 +500,7 @@
 				INFOPLIST_FILE = JWQuiz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gditdev.ch.Demo1.JWQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
