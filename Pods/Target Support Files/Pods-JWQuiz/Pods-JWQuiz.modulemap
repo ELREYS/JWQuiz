@@ -1,0 +1,6 @@
+framework module Pods_JWQuiz {
+  umbrella header "Pods-JWQuiz-umbrella.h"
+
+  export *
+  module * { export * }
+}

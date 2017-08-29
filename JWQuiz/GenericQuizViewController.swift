@@ -200,8 +200,15 @@ class GenericQuizViewController: UIViewController {
         
         do {
             
-            questionArray = try quizLoader.loadMultipleChoiceQuiz(forQuiz: "MultipleChoice")
-            loadNextQuestion()
+            quizLoader.loadMultipleChoiceQuiz{(quized) in
+                
+                if let quized = quized{
+                    self.questionArray = quized
+                    self.loadNextQuestion()
+                }
+                
+                
+            }
             
             
             

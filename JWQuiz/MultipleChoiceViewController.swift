@@ -220,23 +220,24 @@ class MultipleChoiceViewController: UIViewController {
     
     func loadQuestions(){
         
-        do {
+       
+
+        
+            quizLoader.loadMultipleChoiceQuiz{(quized) in
             
-            questionArray = try quizLoader.loadMultipleChoiceQuiz(forQuiz: "MultipleChoice")
-            loadNextQuestion()
+                if let quized = quized{
+                    self.questionArray = quized
+                    self.loadNextQuestion()
+                }
+                
             
             
-            
-        } catch  {
-            switch error {
-            case LoaderError.dictionaryFailed:
-                print("Could not load dictionary")
-            case LoaderError.pathFailed:
-                print("Could not find path")
-            default:
-                print("Unknown error")
             }
-        }
+        
+            
+            
+            
+        
         
     }
     

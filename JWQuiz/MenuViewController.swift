@@ -8,10 +8,18 @@
 
 import UIKit
 import AVFoundation
+import FirebaseDatabase
 var backgroundSound:AVAudioPlayer = AVAudioPlayer()
 var wrongWav:AVAudioPlayer = AVAudioPlayer()
 var correctWav:AVAudioPlayer = AVAudioPlayer()
 var startWav:AVAudioPlayer = AVAudioPlayer()
+
+var ref:DatabaseReference!
+var array:NSDictionary = [:]
+
+
+
+
 
 
 class MenuViewController: UIViewController {
@@ -39,7 +47,7 @@ class MenuViewController: UIViewController {
     private var rightConstraints: [NSLayoutConstraint]!
     
     
-    
+   
     
     
     
@@ -51,6 +59,7 @@ class MenuViewController: UIViewController {
         layoutView()
         
         RandomBackgroundMusic()
+        
         
         let wrongURL = Bundle.main.url(forResource: "wrong", withExtension: "wav")
         wrongWav = try! AVAudioPlayer(contentsOf: wrongURL!)
